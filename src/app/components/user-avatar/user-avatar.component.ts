@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user-avatar',
+  selector: 'user-avatar',
   templateUrl: './user-avatar.component.html',
   styleUrls: ['./user-avatar.component.sass']
 })

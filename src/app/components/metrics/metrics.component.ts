@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-metrics',
+  selector: 'metrics',
   templateUrl: './metrics.component.html',
   styleUrls: ['./metrics.component.sass']
 })

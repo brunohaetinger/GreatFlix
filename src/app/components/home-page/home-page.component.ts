@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'home-page',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.sass']
 })
 export class HomePageComponent implements OnInit {
-  
-  constructor() { }
+  first: {};  
+  constructor(moviesService: MoviesService) { 
+    this.first = moviesService.getFirstNMovies(3);
+  }
 
   ngOnInit() {
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-movies-horizontal-list',
+  selector: 'movies-horizontal-list',
   templateUrl: './movies-horizontal-list.component.html',
   styleUrls: ['./movies-horizontal-list.component.sass']
 })

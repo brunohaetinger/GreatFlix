@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-genre-card',
+  selector: 'genre-card',
   templateUrl: './genre-card.component.html',
   styleUrls: ['./genre-card.component.sass']
 })
