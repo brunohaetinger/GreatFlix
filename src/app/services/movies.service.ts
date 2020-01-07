@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
-import movies from '../../assets/movies.json';
+import moviesJSON from '../../assets/movies.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
+  movies: any
+  constructor() {
+    this.movies = moviesJSON;
+   }
 
-  constructor() { }
+  getFirstNMovies(n: number){
+    return this.movies.slice(0, n);
+  }
 }
