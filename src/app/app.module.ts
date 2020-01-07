@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app-component/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MainSelectionComponent } from './components/main-selection/main-selection.component';
 import { MoviesHorizontalListComponent } from './components/movies-horizontal-list/movies-horizontal-list.component';
@@ -20,6 +19,7 @@ import { MostWatchedGenresComponent } from './components/most-watched-genres/mos
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { GenreCardListComponent } from './components/genre-card-list/genre-card-list.component';
 import { GenreCardComponent } from './components/genre-card/genre-card.component';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { GenreCardComponent } from './components/genre-card/genre-card.component
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
