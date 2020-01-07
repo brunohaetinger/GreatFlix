@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'movies-horizontal-list',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movies-horizontal-list.component.sass']
 })
 export class MoviesHorizontalListComponent implements OnInit {
-
+  @Input() title: string;
+  @Input() movies;
   constructor() { }
 
   ngOnInit() {
