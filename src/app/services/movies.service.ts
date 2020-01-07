@@ -13,4 +13,12 @@ export class MoviesService {
   getFirstNMovies(n: number){
     return this.movies.slice(0, n);
   }
+
+  getPopularMovies(): []{
+    return this.getFirstNMovies(5);
+  }
+
+  getMostWatchedMovies(): []{
+    return this.movies.slice(5, 10);
+  }
 }
