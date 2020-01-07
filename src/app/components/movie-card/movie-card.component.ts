@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'movie-card',
@@ -7,9 +8,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie
-  constructor() { }
-
-  ngOnInit() {
+  pic
+  constructor(public moviesService: MoviesService) {
+    console.log("ENtrei!!")
   }
+  
+  ngOnInit() {
+    if(!this.pic && this.movie){
+      this.moviesService.getPoster(this.movie.imdbID).then(poster => {
+        this.pic = poster;
+      })
+    }
+  }
+
+  
 
 }

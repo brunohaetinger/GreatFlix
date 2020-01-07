@@ -21,4 +21,10 @@ export class MoviesService {
   getMostWatchedMovies(): []{
     return this.movies.slice(5, 10);
   }
+
+  async getPoster(imdbID){
+    let res = await fetch(`http://omdbapi.com/?i=${imdbID}&apikey=d2bba218`);
+    let movieData = await res.json();
+    return movieData.Poster;
+  }
 }
