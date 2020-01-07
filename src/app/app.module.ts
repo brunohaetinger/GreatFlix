@@ -5,13 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-component/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
-// import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppToolbarComponent
+    AppToolbarComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
