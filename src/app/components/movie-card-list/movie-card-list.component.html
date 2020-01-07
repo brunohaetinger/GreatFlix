@@ -1,1 +1,5 @@
-<p>movie-card-list works!</p>
+<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: stretch; max-width: 100%; flex-wrap: nowrap; column-count: 5;" cols="5" rowHeight="1:2">
+    <!-- <mat-grid-tile > -->
+        <movie-card *ngFor='let movie of movies'[movie]="movie"></movie-card>
+    <!-- </mat-grid-tile> -->
+</div>

@@ -1,4 +1,2 @@
 <h2>{{title}}</h2>
-<li *ngFor="let m of movies">
-    {{m.movie_title || ""}}
-</li>
+<movie-card-list [movies]="movies"></movie-card-list>
