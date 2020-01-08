@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import Movie from '../types/Movie';
 import User from '../types/User.js';
 import { DaoService } from './dao.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
-  constructor(private dao: DaoService) {
+  constructor(private dao: DaoService, private userService: UserService) {
    }
 
   getMovieByID(imdbID: string): Movie{
@@ -37,19 +38,20 @@ export class MoviesService {
   }
 
   getTopGenres(): string[]{
-    return ["Action", "Sci-Fi", "Adventure", "Fantasy", "Comedy"]
+    let genresViewsSorted = this.dao.getDatabase().genresViews.sort((a, b) => b.viewCounter - a.viewCounter);
+    return genresViewsSorted.map(gv => gv.genre);
   }
 
   getCurrentUserLastWatchedMovies(): Movie[]{
-    let userID = this.getCurrentUser().username
+    let username = this.userService.getCurrentUser().username
     let lastMoviesIDs = this.dao.getDatabase().userViews.reduce((lastViews, userView) => {
-      if(userView.userID == userID){  
-        lastViews.push(userView.movieID)
+      if(userView.username == username){  
+        lastViews.add(userView.movieID)
       }
       return lastViews;
-    }, [])
+    }, new Set())
 
-    return lastMoviesIDs.map( id => {
+    return [...lastMoviesIDs].map( id => {
       return this.dao.getDatabase().movies.find( m => m.imdbID == id)
     });
   }
