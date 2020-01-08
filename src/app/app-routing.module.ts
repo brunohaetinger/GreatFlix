@@ -4,10 +4,15 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { PlayMovieComponent } from './components/play-movie/play-movie.component';
 import { MetricsComponent } from './components/metrics/metrics.component';
 import { MainSelectionComponent } from './components/main-selection/main-selection.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
-  // { path: 'login', component: Login },
+  { 
+    path: '', 
+    component: LoginComponent,
+    pathMatch: 'full'
+  },
   { 
     path: 'profile',
     component: ProfileComponent,
@@ -27,10 +32,6 @@ const routes: Routes = [
     path: 'main-selection',
     component: MainSelectionComponent,
     data: { title:"Main Selection" },    
-  },
-  { path: '',
-    redirectTo: '/main-selection',
-    pathMatch: 'full'
   },
   { path: '**', component: MainSelectionComponent }
 ];
