@@ -4,6 +4,10 @@ import moviesJSON from '../../assets/movies.json';
 import usersJSON from '../../assets/users.json';
 import Movie from '../types/Movie';
 import User from '../types/User';
+import ViewsByCountry from '../types/ViewsByCountry';
+import TopUserCounter from '../types/TopUserCounter';
+import UserView from '../types/UserView';
+import GenreViews from '../types/GenreViews';
 
 const DB_KEY = "db";
 
@@ -12,7 +16,6 @@ const DB_KEY = "db";
 })
 export class DaoService {
   constructor() {
-    console.log('DAO SERVICE');
     this.checkLocalData();
   }
 
@@ -36,6 +39,65 @@ export class DaoService {
     let localDB: Database = {} as Database;
     localDB.movies = moviesJSON as Movie[];
     localDB.users = usersJSON as User[];
+    localDB.userViews = [] as UserView[];
+    localDB.topUserCounters = [] as TopUserCounter[];
+    localDB.viewsByCountry = [] as ViewsByCountry[];
+    localDB.genresViews = [] as GenreViews[];
     return localDB;
+  }
+
+  insertUserView(username: string, movieID: string) {
+    let db = this.getDatabase();
+    db.userViews.push({
+      movieID: movieID,
+      username: username,
+      timestamp: new Date(),
+    } as UserView);
+    this.setDatabase(db);
+  }
+
+  incrementGenreWatchedCounter(movieGenres: string[]) {
+    let db = this.getDatabase();
+    movieGenres.forEach(movieGenre => {
+      let genreViews = db.genresViews.find(g => g.genre == movieGenre)
+      if(!genreViews){
+        genreViews = {
+          genre: movieGenre,
+          viewCounter: 0,
+        } as GenreViews;
+        db.genresViews.push(genreViews);
+      }
+      genreViews.viewCounter++;
+      this.setDatabase(db);
+    })
+  }
+
+  incrementViewByCountryCounter(movieID: string, country: string) {
+    let db = this.getDatabase();
+    let countryViews = db.viewsByCountry.find(vbc => vbc.country == country && vbc.movieID == movieID)
+    if(!countryViews){
+      countryViews = {
+        country: country,
+        movieID: movieID,
+        viewCounter: 0,
+      } as ViewsByCountry;
+      db.viewsByCountry.push(countryViews);
+    }
+    countryViews.viewCounter++;
+    this.setDatabase(db);
+  }
+  
+  incrementTopUserCounter(username: string) {
+    let db = this.getDatabase();
+    let topUserCounter = db.topUserCounters.find(u => u.username == username);
+    if(!topUserCounter){
+      topUserCounter = {
+        username: username,
+        viewCounter: 0,
+      } as TopUserCounter;
+      db.topUserCounters.push(topUserCounter);
+    }
+    topUserCounter.viewCounter++;
+    this.setDatabase(db);
   }
 }
