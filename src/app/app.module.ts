@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app-component/app.component';
@@ -20,6 +21,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { GenreCardListComponent } from './components/genre-card-list/genre-card-list.component';
 import { GenreCardComponent } from './components/genre-card/genre-card.component';
 import { MaterialModule } from './material.module';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +40,15 @@ import { MaterialModule } from './material.module';
     MostWatchedGenresComponent,
     UserCardComponent,
     GenreCardListComponent,
-    GenreCardComponent
+    GenreCardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
