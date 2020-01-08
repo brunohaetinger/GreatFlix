@@ -1,1 +1,23 @@
-<p>metrics works!</p>
+<div class="metrics-container">
+    <div class="most-watched-header">
+        <h2>Most watched movies in</h2>
+        <mat-form-field color="secondary">
+            <mat-label>Country</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let country of countries" [value]="country">
+                {{country}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <movies-horizontal-list [movies]="mostWatched"></movies-horizontal-list>
+    <mat-divider></mat-divider>
+
+    <h2>Top 3 users</h2>
+    <top-user-list></top-user-list>
+    <mat-divider></mat-divider>    
+
+    <h2>Most watched genres</h2>
+    <most-watched-genres></most-watched-genres>
+</div>
+

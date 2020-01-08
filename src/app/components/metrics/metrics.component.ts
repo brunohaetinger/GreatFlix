@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import Movie from 'src/app/types/Movie';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'metrics',
@@ -6,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./metrics.component.sass']
 })
 export class MetricsComponent implements OnInit {
-
-  constructor() { }
+  mostWatched: Movie[]
+  countries: string[]
+  constructor(moviesService: MoviesService) { 
+    this.mostWatched = moviesService.getMostWatchedMovies();
+    this.countries = moviesService.getCountries();
+  }
 
   ngOnInit() {
   }
