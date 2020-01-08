@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'genre-card',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./genre-card.component.sass']
 })
 export class GenreCardComponent implements OnInit {
-
+  @Input() genre: string
   constructor() { }
 
   ngOnInit() {
