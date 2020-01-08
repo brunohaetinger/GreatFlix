@@ -57,10 +57,9 @@ export class MoviesService {
   }
 
   getTopUsers(): User[]{
-    return this.dao.getDatabase().users.slice(0, 3);
-  }
-
-  getCurrentUser(): User{
-    return this.dao.getDatabase().users[0];
+    let db = this.dao.getDatabase();
+    let users = db.users;
+    let topUsers = db.topUserCounters.sort((a, b) => b.viewCounter - a.viewCounter);
+    return topUsers.map(topUser => users.find(u => u.username == topUser.username));
   }
 }
