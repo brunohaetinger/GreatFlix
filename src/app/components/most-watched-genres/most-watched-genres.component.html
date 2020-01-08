@@ -1,1 +1,5 @@
-<p>most-watched-genres works!</p>
+<mat-grid-list cols="5" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let genre of topGenres" >
+        <genre-card [genre]="genre"></genre-card>
+    </mat-grid-tile>    
+</mat-grid-list>
