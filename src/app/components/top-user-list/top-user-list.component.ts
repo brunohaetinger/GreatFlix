@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import User from 'src/app/types/User';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'top-user-list',
@@ -6,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-user-list.component.sass']
 })
 export class TopUserListComponent implements OnInit {
-
-  constructor() { }
+  topUsers: User[]
+  
+  constructor(moviesService: MoviesService) {
+    this.topUsers = moviesService.getTopUsers();
+   }
 
   ngOnInit() {
   }
