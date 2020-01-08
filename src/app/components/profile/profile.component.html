@@ -1,1 +1,7 @@
-<p>profile works!</p>
+<div class="profile-container">
+    <user-avatar [picture]="user.picture"></user-avatar>
+    <h2 class="mat-h2">{{user.name}}</h2>
+    <h2 class="mat-h2">{{user.email}}</h2>
+    
+    <movies-horizontal-list [title]="'Last Watched'" [movies]="lastWatched"></movies-horizontal-list>
+</div>
