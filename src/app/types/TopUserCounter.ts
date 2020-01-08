@@ -1,5 +1,5 @@
 type TopUserCounter = {
-    userID: string,
+    username: string,
     viewCounter: number,
 }
 

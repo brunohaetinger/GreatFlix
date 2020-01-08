@@ -1,5 +1,5 @@
 type UserView = {
-    userID: string,
+    username: string,
     movieID: string,
     timestamp: Date
 }
