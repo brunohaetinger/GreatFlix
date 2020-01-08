@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from 'src/app/services/movies.service';
+import { UserService } from 'src/app/services/user.service';
 import Movie from 'src/app/types/Movie';
 import User from 'src/app/types/User';
 
@@ -11,8 +12,8 @@ import User from 'src/app/types/User';
 export class ProfileComponent implements OnInit {
   user: User
   lastWatched: Movie[]
-  constructor(moviesService: MoviesService) {
-    this.user = moviesService.getCurrentUser();
+  constructor(moviesService: MoviesService, userService: UserService) {
+    this.user = userService.getCurrentUser();
     this.lastWatched = moviesService.getCurrentUserLastWatchedMovies();
   }
 
