@@ -1,0 +1,26 @@
+[
+    {
+        "username": "esther",
+        "password": "123",
+        "picture": "https://pt.fakenamegenerator.com/images/sil-female.png",
+        "name": "Esther P. Jackson",
+        "email": "EstherPJackson@dayrep.com",
+        "country": "United States"
+    },
+    {
+        "username": "charles",
+        "password": "123",
+        "picture": "https://pt.fakenamegenerator.com/images/sil-male.png",
+        "name": "Charles Y. Richards",
+        "email": "CharlesYRichards@teleworm.us",
+        "country": "Brazil"
+    },
+    {
+        "username": "bran",
+        "password": "123",
+        "picture": "https://pt.fakenamegenerator.com/images/sil-male.png",
+        "name": "Brandon E. Kohl",
+        "email": "BrandonEKohl@armyspy.com",
+        "country": "Brazil"
+    }
+]
