@@ -1,7 +1,7 @@
-<mat-card class="movie-card">
+<mat-card class="movie-card" routerLink="/play-movie/{{movie.imdbID}}" routerLinkActive="active">
     <img mat-card-image src='{{pic}}' alt="Photo of a Shiba Inu">
     <mat-card-header>
         <mat-card-title>{{movie.title}}</mat-card-title>
-        <mat-card-subtitle>{{movie.genres}}</mat-card-subtitle>
+        <mat-card-subtitle>{{movie.genres.slice(0,3)}}</mat-card-subtitle>
     </mat-card-header>
 </mat-card>
