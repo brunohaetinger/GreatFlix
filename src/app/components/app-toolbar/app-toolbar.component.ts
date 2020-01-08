@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppToolbarComponent implements OnInit {
   title = 'SnowFlix';
-  constructor() { }
+  constructor(router: Router) { 
+    router.events.subscribe((val) => {
+      if(val instanceof ActivationEnd) {
+        this.title = val.snapshot.data.title;
+      }
+  });
+  }
 
   ngOnInit() {
   }
