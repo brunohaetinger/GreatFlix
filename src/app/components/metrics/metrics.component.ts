@@ -10,12 +10,16 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class MetricsComponent implements OnInit {
   mostWatched: Movie[]
   countries: string[]
-  constructor(moviesService: MoviesService) { 
+  constructor(private moviesService: MoviesService) { 
     this.mostWatched = moviesService.getMostWatchedMovies();
     this.countries = moviesService.getCountries();
   }
 
   ngOnInit() {
+  }
+
+  countryChanged(event){
+    this.mostWatched = this.moviesService.getMostWatchedMoviesInCountry(event.value);
   }
 
 }

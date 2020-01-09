@@ -1,23 +1,24 @@
 <div class="metrics-container">
     <div class="most-watched-header">
-        <h2>Most watched movies in</h2>
+        <h1 class="mat-h1 h1-end h1-margin">Most watched movies in</h1>
         <mat-form-field color="secondary">
             <mat-label>Country</mat-label>
-            <mat-select>
+            <mat-select (selectionChange)="countryChanged($event)" [(ngModel)]="selectedCountry">
               <mat-option *ngFor="let country of countries" [value]="country">
                 {{country}}
               </mat-option>
             </mat-select>
           </mat-form-field>
     </div>
-    <movies-horizontal-list [movies]="mostWatched"></movies-horizontal-list>
+    <movies-horizontal-list *ngIf="selectedCountry" [movies]="mostWatched"></movies-horizontal-list>
+    <h2 class="mat-h2 h2-center" *ngIf="!selectedCountry">Select a country</h2>
     <mat-divider></mat-divider>
 
-    <h2>Top 3 users</h2>
+    <h1 class="mat-h1 h1-margin">Top 3 users</h1>
     <top-user-list></top-user-list>
     <mat-divider></mat-divider>    
 
-    <h2>Most watched genres</h2>
+    <h1 class="mat-h1 h1-margin">Most watched genres</h1>
     <most-watched-genres></most-watched-genres>
 </div>
 
