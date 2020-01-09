@@ -7,7 +7,7 @@ import { Router, ActivationEnd } from '@angular/router';
   styleUrls: ['./app-toolbar.component.sass']
 })
 export class AppToolbarComponent implements OnInit {
-  title = 'SnowFlix';
+  title = 'GreatFlix';
   constructor(router: Router) { 
     router.events.subscribe((val) => {
       if(val instanceof ActivationEnd) {
