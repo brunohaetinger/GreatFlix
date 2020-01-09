@@ -8,6 +8,7 @@ import ViewsByCountry from '../types/ViewsByCountry';
 import TopUserCounter from '../types/TopUserCounter';
 import UserView from '../types/UserView';
 import GenreViews from '../types/GenreViews';
+import * as _ from 'lodash';
 
 const DB_KEY = "db";
 
@@ -37,7 +38,7 @@ export class DaoService {
 
   getInitialLocalData(): Database {
     let localDB: Database = {} as Database;
-    localDB.movies = moviesJSON as Movie[];
+    localDB.movies = _.uniqBy(moviesJSON as Movie[], 'imdbID');
     localDB.users = usersJSON as User[];
     localDB.userViews = [] as UserView[];
     localDB.topUserCounters = [] as TopUserCounter[];
@@ -98,6 +99,13 @@ export class DaoService {
       db.topUserCounters.push(topUserCounter);
     }
     topUserCounter.viewCounter++;
+    this.setDatabase(db);
+  }
+
+  incremenMovieView(movieID: string) {
+    let db = this.getDatabase();
+    let movie = db.movies.find(m => m.imdbID == movieID);
+    movie.viewCounter = movie.viewCounter + 1 || 1;
     this.setDatabase(db);
   }
 }
