@@ -12,12 +12,17 @@ import User from 'src/app/types/User';
 export class ProfileComponent implements OnInit {
   user: User
   lastWatched: Movie[]
-  constructor(moviesService: MoviesService, userService: UserService) {
+  constructor(moviesService: MoviesService, private userService: UserService) {
     this.user = userService.getCurrentUser();
     this.lastWatched = moviesService.getCurrentUserLastWatchedMovies();
+    
+  }
+  
+  ngOnInit() {
   }
 
-  ngOnInit() {
+  logout(){
+      this.userService.logOut();  
   }
 
 }
