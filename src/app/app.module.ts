@@ -22,6 +22,7 @@ import { GenreCardListComponent } from './components/genre-card-list/genre-card-
 import { GenreCardComponent } from './components/genre-card/genre-card.component';
 import { MaterialModule } from './material.module';
 import { LoginComponent } from './components/login/login.component';
+import { CanActivateGuard } from './guards/CanActivateGuard';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { LoginComponent } from './components/login/login.component';
     MaterialModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    CanActivateGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
