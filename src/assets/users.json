@@ -2,15 +2,31 @@
     {
         "username": "esther",
         "password": "123",
-        "picture": "https://pt.fakenamegenerator.com/images/sil-female.png",
+        "picture": "https://randomuser.me/api/portraits/women/91.jpg",
         "name": "Esther P. Jackson",
         "email": "EstherPJackson@dayrep.com",
         "country": "United States"
     },
     {
+        "username": "bob",
+        "password": "123",
+        "picture": "https://randomuser.me/api/portraits/men/96.jpg",
+        "name": "Bob Walker",
+        "email": "bobwalker@dayrep.com",
+        "country": "United States"
+    },
+    {
+        "username": "dona",
+        "password": "123",
+        "picture": "https://randomuser.me/api/portraits/women/90.jpg",
+        "name": "Donalda Walsh",
+        "email": "donawalsh@dayrep.com",
+        "country": "Australia"
+    },
+    {
         "username": "charles",
         "password": "123",
-        "picture": "https://pt.fakenamegenerator.com/images/sil-male.png",
+        "picture": "https://randomuser.me/api/portraits/men/17.jpg",
         "name": "Charles Y. Richards",
         "email": "CharlesYRichards@teleworm.us",
         "country": "Brazil"
@@ -18,7 +34,7 @@
     {
         "username": "bran",
         "password": "123",
-        "picture": "https://pt.fakenamegenerator.com/images/sil-male.png",
+        "picture": "https://randomuser.me/api/portraits/men/72.jpg",
         "name": "Brandon E. Kohl",
         "email": "BrandonEKohl@armyspy.com",
         "country": "Brazil"
