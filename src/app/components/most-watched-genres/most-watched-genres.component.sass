@@ -1,9 +1,17 @@
-.genres-container
-    display: flex
-    flex-direction: row
-    align-items: center
-    justify-content: space-around
+.genre-container
+    display: table
+    margin: 0 auto
+    flex-wrap: wrap
+
+    .horizontal-list
+        list-style: none
+        padding: 0
+        display: table
+        text-align: center        
+
+        li
+            display: inline-flex
+            padding: 20px
     
     genre-card 
-        flex-grow: 1
-        text-align: center
+            text-align: center

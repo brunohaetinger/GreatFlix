@@ -1,5 +1,7 @@
-<mat-grid-list cols="5" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let genre of topGenres" >
-        <genre-card [genre]="genre"></genre-card>
-    </mat-grid-tile>    
-</mat-grid-list>
+<div class="genre-container" cols="5" rowHeight="2:1">
+    <ul class="horizontal-list">
+        <li *ngFor="let genre of topGenres" >
+            <genre-card [genre]="genre"></genre-card>
+        </li>    
+    </ul>
+</div>
