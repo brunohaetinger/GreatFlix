@@ -6,6 +6,7 @@ type Movie = {
     duration: number,
     year: number,
     imdbScore: number,
+    viewCounter: number,
 }
 
 export default Movie;
