@@ -1,7 +1,7 @@
 <div class="metrics-container">
     <div class="most-watched-header">
         <h1 class="mat-h1 h1-end h1-margin">Most watched movies in</h1>
-        <mat-form-field color="secondary">
+        <mat-form-field class="country-select" color="secondary">
             <mat-label>Country</mat-label>
             <mat-select (selectionChange)="countryChanged($event)" [(ngModel)]="selectedCountry">
               <mat-option *ngFor="let country of countries" [value]="country">

@@ -2,6 +2,7 @@
     <ul class="horizontal-list">
         <li *ngFor="let genre of topGenres" >
             <genre-card [genre]="genre"></genre-card>
-        </li>    
+        </li>
+        <nz-empty *ngIf="topGenres.length == 0"></nz-empty>
     </ul>
 </div>
