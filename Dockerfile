@@ -1,4 +1,4 @@
-FROM node:alpine AS builder
+FROM node:12.2.0 AS builder
 
 WORKDIR /app
 
@@ -9,4 +9,9 @@ RUN npm install && \
 
 FROM nginx:alpine
 
-COPY --from=builder /app/dist/ /usr/share/nginx/html/
+COPY --from=builder /app/dist/great-flix/ /usr/share/nginx/html/
+# expose port 80
+EXPOSE 80
+
+# run nginx
+CMD ["nginx", "-g", "daemon off;"]
