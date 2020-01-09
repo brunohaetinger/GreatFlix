@@ -1,4 +1,4 @@
-<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: stretch; max-width: 100%; flex-wrap: nowrap; column-count: 5;" cols="5" rowHeight="1:2">
+<div class="movie-card-list" cols="5" rowHeight="1:2">
     <!-- <mat-grid-tile > -->
         <movie-card *ngFor='let movie of movies'[movie]="movie"></movie-card>
         <h2 *ngIf="movies.length == 0"class="mat-h2">No movie watched</h2>
