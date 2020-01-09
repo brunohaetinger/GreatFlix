@@ -3,6 +3,7 @@ import Movie from '../types/Movie';
 import User from '../types/User.js';
 import { DaoService } from './dao.service';
 import { UserService } from './user.service';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -20,15 +21,17 @@ export class MoviesService {
   }
 
   getPopularMovies(): Movie[]{
-    return this.getFirstNMovies(5);
+    let movies =  _.sampleSize(this.dao.getDatabase().movies, 5);
+    return movies;
   }
 
   getMostWatchedMovies(): Movie[]{
-    return this.dao.getDatabase().movies.slice(5, 10);
+    const db = this.dao.getDatabase();
+    return _.take(_.orderBy(db.movies, 'viewCounter', 'desc'), 5);
   }
 
   async getPoster(imdbID): Promise<string>{
-    let res = await fetch(`http://omdbapi.com/?i=${imdbID}&apikey=d2bba218`);
+    let res = await fetch(`http://omdbapi.com/?i=${imdbID}&apikey=b41747cd`);
     let movieData = await res.json();
     return movieData.Poster;
   }
@@ -36,15 +39,25 @@ export class MoviesService {
   getCountries(): string[]{
     return ["Brazil", "United States", "Australia"]
   }
+  
+  getMostWatchedMoviesInCountry(country: string): Movie[]{
+    const db = this.dao.getDatabase();
+    const viewsByCountry = _.orderBy(_.filter(db.viewsByCountry, { country: country}), 'viewCounter', 'desc');
+    return _.take(_.intersectionWith(db.movies, viewsByCountry, (m, v) => m.imdbID == v.movieID), 5);
+  }
 
   getTopGenres(): string[]{
-    let genresViewsSorted = this.dao.getDatabase().genresViews.sort((a, b) => b.viewCounter - a.viewCounter);
+    let genresViewsSorted = _.orderBy(this.dao.getDatabase().genresViews, 'viewCounter', 'desc');
     return genresViewsSorted.map(gv => gv.genre);
   }
 
   getCurrentUserLastWatchedMovies(): Movie[]{
-    let username = this.userService.getCurrentUser().username
-    let lastMoviesIDs = this.dao.getDatabase().userViews.reduce((lastViews, userView) => {
+    let username = this.userService.getCurrentUser().username;
+    let lastUserViews = _.reverse(this.dao.getDatabase().userViews);
+    let lastMoviesIDs = _.transform(lastUserViews, (lastViews, userView) => {
+      if(lastViews.size >= 5){
+        return false;
+      }
       if(userView.username == username){  
         lastViews.add(userView.movieID)
       }
@@ -59,7 +72,7 @@ export class MoviesService {
   getTopUsers(): User[]{
     let db = this.dao.getDatabase();
     let users = db.users;
-    let topUsers = db.topUserCounters.sort((a, b) => b.viewCounter - a.viewCounter);
+    let topUsers = _.orderBy(db.topUserCounters, 'viewCounter', 'desc');
     return topUsers.map(topUser => users.find(u => u.username == topUser.username));
   }
 }
