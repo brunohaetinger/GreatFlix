@@ -1,10 +1,12 @@
 <div class="play-container">    
-    <h2>{{movie.title}}</h2>
-    <h3>{{movie.genres}}</h3>
-    <button class="play-btn" mat-button (click)="playMovieClick()">
-        <mat-icon class="play-icon" color="primary" aria-hidden="false" aria-label="Play Movie">play_circle_filled</mat-icon>
-    </button>
-    <p class="play-lbl">
-        Play
-    </p>
+    <h2 class="mat-h2">{{movie.title}}</h2>
+    <h3 class="mat-h3">{{movie.genres}}</h3>
+    <h3 class="mat-h3">{{movie.year}}</h3>
+    <div class="image-btn-container">
+        <img *ngIf="poster" src="{{poster}}"/>
+        <button class="play-btn" mat-button (click)="playMovieClick()">
+            <mat-icon class="play-icon" color="primary" aria-hidden="false" aria-label="Play Movie">play_circle_filled</mat-icon>
+        </button>
+        <p class="play-lbl">Play</p>
+    </div>
 </div>
