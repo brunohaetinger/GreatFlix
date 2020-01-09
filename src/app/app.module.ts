@@ -23,6 +23,12 @@ import { GenreCardComponent } from './components/genre-card/genre-card.component
 import { MaterialModule } from './material.module';
 import { LoginComponent } from './components/login/login.component';
 import { CanActivateGuard } from './guards/CanActivateGuard';
+import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -50,9 +56,12 @@ import { CanActivateGuard } from './guards/CanActivateGuard';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    NgZorroAntdModule,
+    HttpClientModule,
   ],
   providers: [
-    CanActivateGuard
+    CanActivateGuard,
+    { provide: NZ_I18N, useValue: en_US }
   ],
   bootstrap: [AppComponent]
 })
