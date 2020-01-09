@@ -1,9 +1,10 @@
 <div class="login-container">
+    <p class="shadow text2">SnowFlix</p>
     <mat-form-field>
         <input matInput placeholder="Username" [(ngModel)]="username">
     </mat-form-field>
     <mat-form-field>
         <input  matInput placeholder="Password" type="password" [(ngModel)]="password">
     </mat-form-field>
-    <button color="primary" mat-button (click)="executeLogIn()">Log In</button>
+    <button mat-raised-button color="primary" mat-button (click)="executeLogIn()">Log In</button>
 </div>
