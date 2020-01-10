@@ -19,8 +19,8 @@ export class UserService {
       if(user.password != password){
         return "Invalid password";
       }else{
-        EventEmitterService.get('changeUser').emit();
         localStorage.setItem('currentUser', JSON.stringify(user));
+        EventEmitterService.get('changeUser').emit();
         return true;
       }
     }
