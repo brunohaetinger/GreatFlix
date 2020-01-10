@@ -36,7 +36,7 @@ pipeline {
       steps {
         withAWS(region:'us-west-1',credentials: "${env.awsKeyID}") {
           s3Delete bucket: 'greatflix', path: '**/*'
-          // s3Upload bucket: 'greatflix', workingDir: 'dist/great-flix/', includePathPattern: '**/*'
+          s3Upload bucket: 'greatflix', workingDir: 'dist/great-flix/', includePathPattern: '**/*'
         }
         mail subject: 'Production Build', body: 'New Deployment to Production', to: 'brunohaetinger@mail.com'
       }
