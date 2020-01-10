@@ -31,7 +31,7 @@ export class MoviesService {
   }
 
   async getPoster(imdbID): Promise<string>{
-    let res = await fetch(`http://omdbapi.com/?i=${imdbID}&apikey=b41747cd`);
+    let res = await fetch(`https://omdbapi.com/?i=${imdbID}&apikey=b41747cd`);
     let movieData = await res.json();
     return movieData.Poster;
   }
