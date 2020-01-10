@@ -17,11 +17,11 @@ pipeline {
     }
     stage('Test and Build') {
       parallel {
-        stage('Run Tests') {
-          steps {
-            sh 'npm run test'
-          }
-        }
+        // stage('Run Tests') {
+        //   steps {
+        //     sh 'npm run test'
+        //   }
+        // }
         stage('Create Build Artifacts') {
           steps {
             sh 'npm run build'
