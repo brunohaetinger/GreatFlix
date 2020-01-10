@@ -1,20 +1,15 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
-
-  }
+  agent any
   stages {
     stage('Build') {
       steps {
-        sh 'echo "TOP"'
+        sh 'npm install && npm run build:prod'
       }
     }
 
     stage('Echo') {
       steps {
-        sh 'echo "ola"'
+        sh 'docker image ls'
       }
     }
 
