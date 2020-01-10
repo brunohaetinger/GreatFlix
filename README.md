@@ -15,7 +15,7 @@ Clone the repository and run `npm install && npm start` for a dev server. Naviga
 
 ## Build
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build:prod` to build the project for production. The build artifacts will be stored in the `dist/` directory.
 
 ## Users
 
