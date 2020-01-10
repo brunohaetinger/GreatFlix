@@ -1,15 +1,20 @@
 pipeline {
-  agent any
+  agent {
+    dockerfile {
+      filename 'Dockerfile'
+    }
+
+  }
   stages {
     stage('Build') {
       steps {
-        sh 'sudo docker build -t greatflix .'
+        sh 'echo "ok"'
       }
     }
 
     stage('Echo') {
       steps {
-        sh 'sudo docker image ls'
+        sh 'docker image ls'
       }
     }
 
