@@ -10,6 +10,8 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class MetricsComponent implements OnInit {
   mostWatched: Movie[]
   countries: string[]
+  selectedCountry: string;
+
   constructor(private moviesService: MoviesService) { 
     this.mostWatched = moviesService.getMostWatchedMovies();
     this.countries = moviesService.getCountries();
@@ -19,7 +21,8 @@ export class MetricsComponent implements OnInit {
   }
 
   countryChanged(event){
-    this.mostWatched = this.moviesService.getMostWatchedMoviesInCountry(event.value);
+    this.selectedCountry = event.value;
+    this.mostWatched = this.moviesService.getMostWatchedMoviesInCountry(this.selectedCountry);
   }
 
 }
