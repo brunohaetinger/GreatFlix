@@ -8,13 +8,13 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t greatflix .'
+        sh 'echo "TOP"'
       }
     }
 
     stage('Echo') {
       steps {
-        sh 'echo "Olá"'
+        sh 'echo "ola"'
       }
     }
 
