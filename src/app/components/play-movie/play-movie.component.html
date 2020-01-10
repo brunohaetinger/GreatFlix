@@ -1,6 +1,6 @@
 <div class="play-container">    
     <h2 class="mat-h2">{{movie.title}}</h2>
-    <h3 class="mat-h3">{{movie.genres}}</h3>
+    <h3 class="mat-h3">{{movie.genres | genreArray}}</h3>
     <h3 class="mat-h3">{{movie.year}}</h3>
     <div class="image-btn-container">
         <img *ngIf="poster" src="{{poster}}"/>
