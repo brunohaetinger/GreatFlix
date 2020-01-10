@@ -27,6 +27,7 @@ import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { GenreArrayPipe } from './pipes/genre-array.pipe';
 
 registerLocaleData(en);
 
@@ -48,7 +49,8 @@ registerLocaleData(en);
     UserCardComponent,
     GenreCardListComponent,
     GenreCardComponent,
-    LoginComponent
+    LoginComponent,
+    GenreArrayPipe
   ],
   imports: [
     BrowserModule,
