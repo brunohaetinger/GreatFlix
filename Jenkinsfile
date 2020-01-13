@@ -1,13 +1,14 @@
 pipeline {
-  agent {
+  agent{
     docker {
       image 'node:12.2.0'
+      args '-v /dist/great-flix/:/dist/great-flix/'
     }
-  }
+  } 
   stages {
     stage('Install Packages') {
       steps {
-        sh 'npm install --unsafe-perm=true'
+        sh 'npm install'
       }
     }
     stage('Build') {
@@ -17,14 +18,16 @@ pipeline {
     }
     stage('Deployment') {        
       when {
-        branch 'master'
+        branch 'hotfix/ci-cd'
       }
       steps {
-        withAWS(region:'us-west-1',credentials: "${env.awsKeyID}") {
-          s3Delete bucket: 'greatflix', path: '**/*'
-          s3Upload bucket: 'greatflix', workingDir: 'dist/great-flix/', includePathPattern: '**/*'
+        dir(path: '/dist/great-flix/') {
+          withAWS(region:'us-west-1',credentials: "${env.awsKeyID}") {
+            s3Delete bucket: 'greatflix', path: '**/*'
+            s3Upload file: 'dist/great-flix/', bucket: 'greatflix', workingDir: 'dist/great-flix/', includePathPattern: '**/*'
+          }
+          mail subject: 'Production Build', body: 'New Deployment to Production', to: 'brunohaetinger@mail.com'
         }
-        mail subject: 'Production Build', body: 'New Deployment to Production', to: 'brunohaetinger@mail.com'
       }
     }
   }
